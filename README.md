@@ -1,6 +1,7 @@
 # Website-Based Chatbot Using Embeddings
 
 <img width="1906" height="917" alt="Screenshot 2026-01-29 235442" src="https://github.com/user-attachments/assets/0b392e4a-4715-4527-98d2-94fd9a05958a" />
+<img width="1902" height="960" alt="Screenshot 2026-01-30 005833" src="https://github.com/user-attachments/assets/1afcff30-a93c-4a30-935f-aebf95d8737d" />
 
 
 ## Project Overview
@@ -119,4 +120,5 @@ streamlit run app.py
 ---
 
 **Company:** Humanli.ai
+
 
