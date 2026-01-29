@@ -1,5 +1,8 @@
 # Website-Based Chatbot Using Embeddings
 
+<img width="1906" height="917" alt="Screenshot 2026-01-29 235442" src="https://github.com/user-attachments/assets/0b392e4a-4715-4527-98d2-94fd9a05958a" />
+
+
 ## Project Overview
 
 This project is an AI-powered website-based chatbot that allows users to ask questions strictly grounded in the content of a given website. The system crawls and cleans website HTML, generates embeddings from the extracted text, stores them in a persistent vector database, and retrieves relevant context to answer user queries accurately without hallucination.
@@ -116,3 +119,4 @@ streamlit run app.py
 ---
 
 **Company:** Humanli.ai
+
