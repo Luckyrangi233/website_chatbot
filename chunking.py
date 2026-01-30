@@ -9,6 +9,5 @@ def chunk_text(text):
     )
 
     chunks = splitter.split_text(text)
-
     documents = [Document(page_content=chunk) for chunk in chunks]
     return documents

@@ -24,7 +24,9 @@ if st.button("Index Website"):
             docs = crawl_website(url)
 
         with st.spinner("Processing content..."):
-            chunks = chunk_text(docs)
+           full_text = "\n".join(docs)
+           chunks = chunk_text(full_text)
+
 
         with st.spinner("Creating embeddings..."):
             vectordb = create_or_load_vectorstore(chunks)
