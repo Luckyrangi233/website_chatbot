@@ -1,8 +1,10 @@
 streamlit
-langchain
-langchain-community
+langchain==0.1.20
+langchain-community==0.0.38
 sentence-transformers
 chromadb
 beautifulsoup4
 requests
 python-dotenv
+torch
+transformers
