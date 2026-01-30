@@ -1,20 +1,14 @@
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
 
-def chunk_text(documents):
+
+def chunk_text(text):
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
-        chunk_overlap=100
+        chunk_overlap=50
     )
 
-    chunks = []
-    for doc in documents:
-        split_texts = splitter.split_text(doc["content"])
-        for text in split_texts:
-            chunks.append({
-                "text": text,
-                "metadata": {
-                    "source": doc["source"],
-                    "title": doc["title"]
-                }
-            })
-    return chunks
+    chunks = splitter.split_text(text)
+
+    documents = [Document(page_content=chunk) for chunk in chunks]
+    return documents
