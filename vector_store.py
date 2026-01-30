@@ -1,8 +1,5 @@
-
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
-
-embeddings = OpenAIEmbeddings()
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 def create_or_load_vectorstore(chunks):
     embeddings = HuggingFaceEmbeddings(
@@ -14,5 +11,6 @@ def create_or_load_vectorstore(chunks):
         embedding=embeddings,
         persist_directory="chroma_db"
     )
+
     vectordb.persist()
     return vectordb
