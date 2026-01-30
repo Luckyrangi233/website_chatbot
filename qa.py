@@ -1,39 +1,33 @@
-# qa.py
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
-from langchain.chat_models import ChatOpenAI
+from langchain.llms import HuggingFacePipeline
+from transformers import pipeline
 
 def create_qa_chain(vectordb):
-    """
-    Create a conversation-based retrieval chain with short-term memory.
-    """
+    llm_pipeline = pipeline(
+        "text2text-generation",
+        model="google/flan-t5-base",
+        max_length=512
+    )
+
+    llm = HuggingFacePipeline(pipeline=llm_pipeline)
+
     memory = ConversationBufferMemory(
         memory_key="chat_history",
         return_messages=True
     )
 
-    llm = ChatOpenAI(
-        temperature=0,
-        model_name="gpt-3.5-turbo"
-    )
-
-    qa_chain = ConversationalRetrievalChain.from_llm(
+    return ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectordb.as_retriever(search_kwargs={"k": 3}),
+        retriever=vectordb.as_retriever(),
         memory=memory
     )
 
-    return qa_chain
-
-
 def ask_question(chain, question):
-    """
-    Ask a question via the chain.
-    Returns fallback sentence if answer is missing.
-    """
     result = chain({"question": question})
-    answer = result["answer"].strip()
+    answer = result["answer"]
 
-    if not answer or len(answer) < 5:
+    if not answer.strip():
         return "The answer is not available on the provided website."
+
     return answer

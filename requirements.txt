@@ -1,9 +1,7 @@
-streamlit==1.31.1
-langchain==0.1.16
-langchain-community==0.0.32
-sentence-transformers==2.2.2
-chromadb==0.4.22
-torch
+streamlit
+langchain
+langchain-community
+langchain-openai
 beautifulsoup4
 requests
 python-dotenv
